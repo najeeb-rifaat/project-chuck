@@ -1,0 +1,32 @@
+{
+  "name": "project-chuck",
+  "version": "1.0.0",
+  "description": "chuck microservice",
+  "main": "build/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/najeeb-rifaat/project-chuck"
+  },
+  "scripts": {
+    "start": "node .",
+    "dev": "backpack",
+    "build": "backpack build",
+    "test": "mocha test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "good": "^7.3.0",
+    "good-console": "^6.4.0",
+    "good-squeeze": "^5.0.2",
+    "hapi": "^16.6.2",
+    "source-map-support": "^0.5.0"
+  },
+  "devDependencies": {
+    "backpack-core": "^0.4.3",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "sinon": "^4.0.1"
+  }
+}
