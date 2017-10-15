@@ -3,4 +3,4 @@
 
 # except below 
 !package.json
-!/build
+!build/**
