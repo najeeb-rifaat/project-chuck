@@ -17,9 +17,9 @@ class DataConnector {
    * @param {String} tid - unique ID
    * @param {Object} args - Object to hold details that will be updated to persistance 
    */
-  set(tid, { first_name, last_name, tel_number, salary, time, product }) {
+  set(tid, { firstName, lastName, phoneNumber, salary, time, product }) {
     this.mock_persistance[this.mock_persistance.findIndex(thisRow => thisRow.tid === tid)] = {
-      tid, first_name, last_name, tel_number, salary, product, time
+      tid, firstName, lastName, phoneNumber, salary, product, time
     };
     return true;
   }

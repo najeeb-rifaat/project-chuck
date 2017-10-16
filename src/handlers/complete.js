@@ -1,8 +1,10 @@
 module.exports = (customersModel) => (request, reply) => {
   const tid = request.query['tid'];
-  const first_name = request.query['fname'];
-  const last_name = request.query['lname'];
-  const tel_number = request.query['tel'];
+  console.info('Processing complete for tid', tid);
+
+  const firstName = request.query['firstName'];
+  const lastName = request.query['lastName'];
+  const phoneNumber = request.query['phoneNumber'];
   const salary = request.query['salary'];
   const product = request.query['product'];
   const time = request.query['time'];
@@ -11,7 +13,7 @@ module.exports = (customersModel) => (request, reply) => {
 
   if (data) {
     const success = 
-      customersModel.setCustomer(tid, { first_name, last_name, tel_number, salary, time, product });
+      customersModel.setCustomer(tid, { firstName, lastName, phoneNumber, salary, time, product });
     if (success) {
       reply('Success').code(202);
     } else {

@@ -7,5 +7,11 @@ module.exports = [
   },
   { 
     tid: 'AX03'
+  },
+  { 
+    tid: 'AX04'
+  },
+  { 
+    tid: 'AX05'
   }
 ];
