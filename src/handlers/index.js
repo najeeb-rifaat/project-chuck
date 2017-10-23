@@ -1,7 +1,7 @@
-const test = require('./test');
-const complete = require('./complete');
+const testHandler = require('./test');
+const completeHandler = require('./complete');
 
 module.exports = {
-  test,
-  complete
+  testHandler,
+  completeHandler
 };

@@ -1,7 +1,20 @@
 class DataConnector {
 
-  constructor(fixtureData) {
-    this.mock_persistance = fixtureData;
+  constructor() {
+    //TODO: this is fixture data initial state
+    this.mock_persistance = [
+      {
+        tid: 'AX01'
+      }, {
+        tid: 'AX02'
+      }, {
+        tid: 'AX03'
+      }, {
+        tid: 'AX04'
+      }, {
+        tid: 'AX05'
+      }
+    ];
   }
 
   /**
@@ -17,9 +30,22 @@ class DataConnector {
    * @param {String} tid - unique ID
    * @param {Object} args - Object to hold details that will be updated to persistance 
    */
-  set(tid, { firstName, lastName, phoneNumber, salary, time, product }) {
+  set(tid, {
+    firstName,
+    lastName,
+    phoneNumber,
+    salary,
+    time,
+    product
+  }) {
     this.mock_persistance[this.mock_persistance.findIndex(thisRow => thisRow.tid === tid)] = {
-      tid, firstName, lastName, phoneNumber, salary, product, time
+      tid,
+      firstName,
+      lastName,
+      phoneNumber,
+      salary,
+      product,
+      time
     };
     return true;
   }

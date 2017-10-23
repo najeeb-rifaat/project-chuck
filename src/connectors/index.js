@@ -1,5 +1,5 @@
-const DataConnector = require('./data_connector');
+const FakeConnector = require('./fake_connector');
 
 module.exports = {
-  DataConnector
+  FakeConnector
 };

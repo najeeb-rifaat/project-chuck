@@ -1,4 +1,14 @@
+const pkg = require('../package.json');
+
 module.exports = {
+  // package info
+  package: {
+    info: {
+      title: pkg.name,
+      version: pkg.version
+    }
+  },
+
   //server config
   server: {
     port: 3000,
