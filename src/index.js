@@ -7,8 +7,8 @@ const config = require('../config');
 const apiServer = require('./server');
 const { Customers } = require('./models');
 const { FakeConnector } = require('./connectors');
-const { testHandler, completeHandler } = require('./handlers');
-const { testRoute, completeRoute } = require('./routes');
+const { testHandler, deleteHandler, completeHandler } = require('./handlers');
+const { testRoute, deleteRoute, completeRoute } = require('./routes');
 
 const fakeConnector = new FakeConnector();
 const customerModel = new Customers(fakeConnector);
@@ -21,6 +21,7 @@ server.registerPlugin(server, Vision);
 server.registerPlugin(server, HapiSwagger, config.package);
 
 server.addRoute(testRoute(testHandler(customerModel)));
+server.addRoute(deleteRoute(deleteHandler(customerModel)));
 server.addRoute(completeRoute(completeHandler(customerModel)));
 
 server.startServer();

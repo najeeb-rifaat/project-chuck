@@ -49,6 +49,15 @@ class DataConnector {
     };
     return true;
   }
+
+  /**
+   * Delete record from persisted set
+   * @param {String} tid - unique ID
+   */
+  delete(tid) {
+    this.mock_persistance = this.mock_persistance.filter(thisRow => thisRow.tid !== tid);
+    return true;
+  }
 }
 
 module.exports = DataConnector;

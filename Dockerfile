@@ -9,8 +9,8 @@ WORKDIR /home/chuck
 COPY . .
 RUN npm install --production
 
-# chnage this if config (./config/index) changes is pointed to diffrent port
+# change this if config (./config/index) changes is pointed to diffrent port
 EXPOSE 3000
 
 # run start to spin up server
-CMD npm start
+CMD node build/main.js

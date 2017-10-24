@@ -2,7 +2,7 @@
   "name": "project-chuck",
   "version": "1.0.0",
   "description": "chuck microservice",
-  "main": "build/main.js",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/najeeb-rifaat/project-chuck"

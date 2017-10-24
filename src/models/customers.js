@@ -22,6 +22,17 @@ class Customers {
     }
     return false;
   }
+
+  /**
+   * delete customer data
+   * @param {Strong} tid - Identifier
+   */
+  deleteCustomer(tid) {
+    if(this.getCustomer(tid)) {
+      return this.dataConnector.delete(tid);
+    }
+    return false;
+  }
 }
 
 module.exports = Customers;
