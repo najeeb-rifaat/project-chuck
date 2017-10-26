@@ -1,0 +1,22 @@
+$bgDefault   : #e74c3c;
+$bgHighlight : #c0392b;
+$colDefault : #ffffff;
+
+.navbar-default {
+  background-color: $bgDefault;
+  border-color: $bgHighlight;
+  .navbar-brand {
+    color: $colDefault;
+    font-size: 5pc
+  }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+      }
+    }
+  }
+  .navbar-link {
+    color: $colDefault;
+  }
+}
