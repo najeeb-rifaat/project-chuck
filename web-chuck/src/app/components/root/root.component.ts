@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import request from 'request';
 
 const getParameterByName = (name) => {
   const url = window.location.href;
@@ -17,7 +17,18 @@ const getParameterByName = (name) => {
   styleUrls: ['./root.component.scss']
 })
 export class RootComponent {
-  phoneNumber = getParameterByName('phone') || 'NO_PHONE;'
+  tid = getParameterByName('tid') || 'NO_TID';
+  phoneNumber = getParameterByName('phone') || 'NO_PHONE';
+  title = `${this.phoneNumber} Click to opt-out`;
+
+  optout() {
+    request
+    .get(`http://localhost:3000/delete?tid=${this.tid}`)
+    .on('response', function(response) {
+      console.log(response.statusCode) // 200
+      console.log(response.headers['content-type']) // 'image/png'
+    })
+  }
 }
 
 

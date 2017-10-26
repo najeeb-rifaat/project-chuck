@@ -1,13 +1,11 @@
 build_container: 
-	docker build . -t=ms-chuck
+	docker build . -t=web-chuck
 
 build_source:
 	# %% Remove old build artifacts
 	rm -rf build node_modules
 	# %% Install dependancies 
 	npm install
-	# %% Run tests
-	npm test
 	# %% Build source
 	npm run build
 

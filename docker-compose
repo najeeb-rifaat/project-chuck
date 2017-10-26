@@ -1,0 +1,11 @@
+version: '2'
+services:
+  web-chuck:
+    build:
+      context: ./web-chuck
+    environment:
+    ports:
+      - 5000:5000
+      - 3000:3000
+depends_on:
+      - ms-chuck

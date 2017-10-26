@@ -8,4 +8,7 @@ import { Component, Input} from '@angular/core';
 export class ButtonComponent {
   @Input()
   title: String;
+
+  @Input() 
+  onTap: Function;
 }

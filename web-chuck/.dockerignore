@@ -1,0 +1,6 @@
+# Ignore all files 
+**
+
+# except below 
+!config
+!dist
