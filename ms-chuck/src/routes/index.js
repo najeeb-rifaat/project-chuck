@@ -1,9 +1,9 @@
 const testRoute = require('./test');
-const deleteRoute = require('./delete');
+const optoutRoute = require('./optout');
 const completeRoute = require('./complete');
 
 module.exports = {
   testRoute,
-  deleteRoute,
+  optoutRoute,
   completeRoute
 };

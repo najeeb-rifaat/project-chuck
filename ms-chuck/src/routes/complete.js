@@ -1,20 +1,24 @@
+const joi = require('joi');
 
 // Import schemas for request validation
 const {
-  tidSchema,
+  trackingIdSchema,
+  campaignIdSchema,
   timeSchema,
   salarySchema,
   lastNameSchema,
   firstNameSchema,
-  productCodeSchema,
-  telephoneNumberSchema,
+  productSchema,
+  phoneNumberSchema,
+  customerSchema
 } = require('../schemas');
+
 
 // export higher order func to produce route
 module.exports = (completeHandler) => {
   return {
-    path: '/complete',
-    method: 'GET', // not sure this should be a get ...
+    path: '/complete/{trackingId}/{campaignId}',
+    method: 'POST', // not sure this should be a get ...
     // handling method
     handler: completeHandler,
     // config for endpoint
@@ -23,27 +27,30 @@ module.exports = (completeHandler) => {
       notes: 'returns full record after update',
       tags: ['api'],
       validate: {
-         // request contract 
-        query: {
-          tid: tidSchema,
+        params: {
+          trackingId: trackingIdSchema.required(),
+          campaignId: campaignIdSchema.required()
+         },
+         payload: joi.object({
           firstName: firstNameSchema.required(),
           lastName: lastNameSchema.required(),
-          phoneNumber: telephoneNumberSchema.required(),
-          product: productCodeSchema.required(),
+          phoneNumber: phoneNumberSchema.required(),
+          product: productSchema.required(),
           salary: salarySchema.required(),
-          time: timeSchema.optional()
-        }
+          contactTimeFrom: timeSchema.optional(),
+          contactTimeTo: timeSchema.optional()
+        })
       },
-      // response contract 
       plugins: {
         'hapi-swagger': {
           responses: {
-            202: { description: 'Success' },
+            202: { description: 'Accepted', schema: customerSchema },
+            400: { description: 'Bad Input' },
             404: { description: 'Not Found' },
             500: { description: 'Internal Error' },
           }
         }
       }  
-    }
+    },
   }
 };

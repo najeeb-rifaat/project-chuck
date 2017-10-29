@@ -1,17 +1,21 @@
-const tidSchema = require('./tid');
+const trackingIdSchema = require('./tracking_id');
+const campaignIdSchema = require('./campaign_id');
 const firstNameSchema = require('./first_name');
 const lastNameSchema = require('./last_name');
-const telephoneNumberSchema = require('./telephone_number');
+const phoneNumberSchema = require('./phone_number');
 const salarySchema = require('./salary');
-const productCodeSchema = require('./product_code');
+const productSchema = require('./product');
 const timeSchema = require('./time');
+const customerSchema = require('./customer');
 
 module.exports = {
-  tidSchema,
+  trackingIdSchema,
+  campaignIdSchema,
   firstNameSchema,
   lastNameSchema,
-  telephoneNumberSchema,
+  phoneNumberSchema,
   salarySchema,
-  productCodeSchema,
-  timeSchema
+  productSchema,
+  timeSchema,
+  customerSchema
 };

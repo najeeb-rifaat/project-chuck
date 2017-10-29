@@ -1,9 +1,9 @@
 const testHandler = require('./test');
-const deleteHandler = require('./delete');
+const optoutHandler = require('./optout');
 const completeHandler = require('./complete');
 
 module.exports = {
   testHandler,
-  deleteHandler,
+  optoutHandler,
   completeHandler
 };

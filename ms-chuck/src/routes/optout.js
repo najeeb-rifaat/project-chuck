@@ -1,24 +1,25 @@
 // Import schemas for request validation
 const {
-  tidSchema
+  trackingIdSchema,
+  campaignIdSchema
 } = require('../schemas');
 
 // export higher order func to produce route
-module.exports = (testHandler) => {
+module.exports = (optoutHandler) => {
   return {
-    path: '/delete',
-    method: 'GET',
+    path: '/optout/{trackingId}/{campaignId}',
+    method: 'POST',
     // handling method
-    handler: testHandler,
+    handler: optoutHandler,
     // config for endpoint
     config: {
       description: 'test entry existence and status',
       notes: 'returns full record',
       tags: ['api'],
       validate: {
-         // request contract 
-        query: {
-          tid: tidSchema
+        params: {
+          trackingId: trackingIdSchema.required(),
+          campaignId: campaignIdSchema.required()
         }
       },
       // response contract 
@@ -26,12 +27,11 @@ module.exports = (testHandler) => {
         'hapi-swagger': {
           responses: {
             200: { description: 'Success' },
-            404: { description: 'Not Found' },
             400: { description: 'Bad Input' },
             500: { description: 'Internal Error' },
           }
         }
-      }  
+      }
     }
   }
 };

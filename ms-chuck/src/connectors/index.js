@@ -1,5 +1,5 @@
-const FakeConnector = require('./fake_connector');
+const MySqlConnector = require('./mysql_connector')
 
 module.exports = {
-  FakeConnector
+  MySqlConnector
 };

@@ -25,6 +25,7 @@
     "hapi-swagger": "^8.0.0",
     "inert": "^4.2.1",
     "joi": "^13.0.0",
+    "mysql": "github:mysqljs/mysql",
     "source-map-support": "^0.5.0",
     "vision": "^4.1.1"
   },

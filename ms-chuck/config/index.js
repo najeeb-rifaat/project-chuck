@@ -11,9 +11,8 @@ module.exports = {
 
   //server config
   server: {
-    port: 3000,
-    host: '0.0.0.0',
-    routes: { cors: true }
+    port: process.env.SERVER_PORT || 3000,
+    host: process.env.SERVER_HOST || '0.0.0.0'
   },
 
   // logging config
@@ -29,5 +28,13 @@ module.exports = {
         'stdout'
       ]
     }
+  },
+
+  // DB connection info
+  database: {
+    host     : process.env.DB_HOST || '127.0.0.1',
+    user     : process.env.DB_USER || 'root',
+    password : process.env.DB_PASS || 'project-chuck',
+    database : process.env.DB_NAME || 'project-chuck'
   }
 };

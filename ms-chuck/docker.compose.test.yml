@@ -1,0 +1,32 @@
+# Use root/example as user/password credentials
+version: '3.1'
+services:
+    ms:
+        image: ms-chuck
+        restart: always
+        environment:
+            DB_HOST: db
+            DB_PASS: project-chuck
+            DB_NAME: project-chuck
+            SERVER_PORT: 3000
+        ports:
+          - 3000:3000
+        depends_on:
+         - db
+         - admin
+
+    admin:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
+        depends_on:
+         - db
+
+    db:
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: project-chuck
+        ports:
+          - 3306:3306

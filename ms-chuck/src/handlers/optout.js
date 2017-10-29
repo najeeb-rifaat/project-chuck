@@ -1,8 +1,8 @@
 module.exports = (customersModel) => (request, reply) => {
-  const tid = request.query['tid'];
-  console.info('Processing delete for tid', tid);
+  const trackingId  = request.query['tid'];
+  console.info('Processing delete for tracking id', trackingId);
 
-  const data = customersModel.getCustomer(tid);
+  const data = customersModel.getCustomer(trackingId);
 
   if (data) {
     //TODO: check if row can be deleted ? 

@@ -1,13 +1,9 @@
 module.exports = (customersModel) => (request, reply) => {
-  const tid = request.query['tid'];
-  console.info('Processing test for tid', tid);
+  const trackingId = request.params.trackingId;
+  const campaignId = request.params.campaignId;
 
-  const data = customersModel.getCustomer(tid);
+  console.info(`Processing /test for tracking ${trackingId} and campaign ${campaignId}`);
 
-  if (data) {
-    //TODO: check if row have been consumed ? 
-    reply(data);
-  } else {
-    reply('Not Found').code(404);
-  }
+  return customersModel.registerInterest(trackingId, campaignId)
+  .then(data => reply(data).code(202));
 };

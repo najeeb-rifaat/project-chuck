@@ -4,34 +4,76 @@ class Customers {
   }
 
   /**
-   * get customer data
-   * @param {String} tid - Identifier
+   * 
+   * @param {*} trackingId 
+   * @param {*} campaignId 
    */
-  getCustomer(tid) {
-    return this.dataConnector.get(tid);
+  registerInterest(trackingId, campaignId) {
+    return this.dataConnector
+    .getByTrackingAndCampaignId(trackingId, campaignId)
+    .then(data => {
+      if (data && data.length > 0) {
+        return this._marshalDbToModel(data[0]);
+      } else {
+        return this.dataConnector
+          .register(trackingId, campaignId)
+          .then(newRowId => this.dataConnector.getById(newRowId))
+          .then(newData => this._marshalDbToModel(newData[0]));
+      }
+    });
   }
 
   /**
-   * set customer data
-   * @param {String} tid - Identifier
-   * @param {Object} data - Data to persist
+   * 
+   * @param {*} trackingId 
+   * @param {*} campaignId 
+   * @param {*} customerData 
    */
-  setCustomer(tid, data) {
-    if(this.getCustomer(tid)) {
-      return this.dataConnector.set(tid, data);
-    }
-    return false;
+  registerDetails(trackingId, campaignId, customerData) {
+    return this.dataConnector
+    .getByTrackingAndCampaignId(trackingId, campaignId)
+    .then(data => {
+      if (data && data.length > 0) {
+        return this.dataConnector.complete(trackingId, campaignId, customerData)
+        .then(completedRowId => this.dataConnector.getById(completedRowId))
+        .then(newData => this._marshalDbToModel(newData[0]));
+      } else {
+        console.warn(
+          `Client was not registered with given tracking id (${trackingId}) and campaign id (${campaignId})`
+        );
+        return false;
+      }
+    })
   }
 
   /**
    * delete customer data
    * @param {Strong} tid - Identifier
    */
-  deleteCustomer(tid) {
-    if(this.getCustomer(tid)) {
-      return this.dataConnector.delete(tid);
+  optOut(trackingId, campaignId, phoneNumber) {
+    if(this.dataConnector.optOut(trackingId, campaignId, phoneNumbe)) {
+      return true;
     }
     return false;
+  }
+
+
+  _marshalDbToModel(dbData) {
+    return {
+      id: dbData.id,
+      trackingId: dbData.tracking_id,
+      campaignId: dbData.campaign_id,
+      firstName: dbData.first_name,
+      lastName: dbData.last_name,
+      phoneNumber: dbData.phone_number,
+      salary: dbData.salary,
+      product: dbData.product,
+      contactTime: {
+        from: dbData.contact_time_from,
+        to: dbData.contact_time_to
+      },
+      createdAt: dbData.created_at
+    }
   }
 }
 
