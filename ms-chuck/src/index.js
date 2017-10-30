@@ -11,7 +11,6 @@ const { testHandler, optoutHandler, completeHandler } = require('./handlers');
 const { testRoute, optoutRoute, completeRoute } = require('./routes');
 
 const server = new apiServer(config.server);
-console.log(config.database);
 const sqlConnector = new MySqlConnector(config.database);
 const customerModel = new Customers(sqlConnector);
 
